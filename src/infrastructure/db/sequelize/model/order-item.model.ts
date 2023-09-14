@@ -19,7 +19,7 @@ export default class OrderItemModel extends Model {
   declare id: string;
 
   @ForeignKey(() => ProductModel)
-  @Column({ allowNull: false })
+  @Column({ allowNull: true })
   declare productId: string;
 
   @BelongsTo(() => ProductModel)

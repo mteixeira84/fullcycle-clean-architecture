@@ -36,24 +36,55 @@ export default class OrderRepository implements OrderRepositoryInterface {
   }
 
   async update(entity: Order): Promise<void> {
+    try {
+      const sequelize = OrderModel.sequelize;
+      await sequelize.transaction(async (t) => {
+        await OrderItemModel.destroy({
+          where: { order_id: entity.id },
+          transaction: t,
+        });
+        const items = entity.items.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          product_id: item.productId,
+          quantity: item.quantity,
+          order_id: entity.id,
+        }));
+        await OrderItemModel.bulkCreate(items, { transaction: t });
+        await OrderModel.update(
+          { total: entity.total() },
+          { where: { id: entity.id }, transaction: t }
+        );
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  /*
+  async update(entity: Order): Promise<void> {
     const updatedItems = entity.items.map((item) => ({
       id: item.id,
       name: item.name,
       price: item.price,
-      product_id: item.productId,
+      productId: item.productId,
       quantity: item.quantity,
     }));
     const orderItems = await OrderItemModel.findAll({
-      where: { orderId: entity.id },
+      where: { order_id: entity.id },
     });
 
     for (const updatedItem of updatedItems) {
       const itemsExistsModel = orderItems.find(
         (orderItem) => orderItem.id === updatedItem.id
       );
-
-      if (!itemsExistsModel) {
-        await OrderItemModel.create({ ...updatedItem, orderId: entity.id });
+      try {
+        if (!itemsExistsModel) {
+          await OrderItemModel.create({ ...updatedItem, orderId: entity.id });
+        }
+      } catch (err) {
+        console.log(err);
       }
     }
 
@@ -66,11 +97,12 @@ export default class OrderRepository implements OrderRepositoryInterface {
         await OrderItemModel.destroy({ where: { id: orderItem.id } });
       }
     }
+
     await OrderModel.update(
       { total: entity.total() },
       { where: { id: entity.id } }
     );
-  }
+  }*/
 
   async find(id: string): Promise<Order> {
     let orderModel;
