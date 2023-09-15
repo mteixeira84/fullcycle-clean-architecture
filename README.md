@@ -1,0 +1,8 @@
+<h1 align="left">Full Cycle DDD - Desafio 01</h1>
+
+Nesse desafio você deverá fazer com que a classe OrderRepository implemente totalmente os métodos definidos pelo OrderRepositoryInterface. 
+Toda essa implementação deverá ser reproduzida através de testes.
+
+Item obrigatório:
+ - Todos os testes devem estar passando.
+ - A linguagem de programação para este desafio é TypeScript.
