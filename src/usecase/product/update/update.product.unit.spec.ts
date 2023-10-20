@@ -1,5 +1,5 @@
 import ProductFactory from "../../../domain/product/factory/product.factory";
-import UpdateProductUseCase from "./uptade.produtc.usecase";
+import UpdateProductUseCase from "./uptade.product.usecase";
 
 const product = ProductFactory.createProduct("Product A", 10);
 
