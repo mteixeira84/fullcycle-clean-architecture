@@ -1,4 +1,4 @@
-import CreateProductUseCase from "./create.produtc.usecase";
+import CreateProductUseCase from "./create.product.usecase";
 
 const input = {
   name: "Product A",

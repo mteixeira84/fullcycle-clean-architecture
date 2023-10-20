@@ -19,7 +19,7 @@ export default class ProductFactory {
     }
   }
 
-  public static createProduct(name: string, price: number): ProductInterface {
+  public static createProduct(name: string, price: number) {
     return new Product(uuid(), name, price);
   }
 }

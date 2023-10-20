@@ -45,16 +45,12 @@ describe("E2E test for product", () => {
     const listResponse = await request(app).get("/product").send();
 
     expect(listResponse.status).toBe(200);
-    //expect(listResponse.body.products.length).toBe(2);
-
-    /**
-     expect(listResponse.status).toBe(200);
     expect(listResponse.body.products.length).toBe(2);
     const product = listResponse.body.products[0];
     expect(product.name).toBe("Product A");
     expect(product.price).toBe(10);
     const product2 = listResponse.body.products[1];
     expect(product2.name).toBe("Product B");
-    expect(product2.price).toBe(20); */
+    expect(product2.price).toBe(20);
   });
 });
