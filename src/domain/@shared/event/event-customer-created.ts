@@ -1,4 +1,4 @@
-import EventInterface from "./event/event.interface";
+import EventInterface from "./event.interface";
 
 interface CustomerCreatedEventData {
   customer: {

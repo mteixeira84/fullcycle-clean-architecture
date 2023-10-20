@@ -1,7 +1,7 @@
-import SendConsoleLog1Handler from "../customer/event/handler/send-consolelog1-customer-is-created.handler";
-import SendConsoleLog2Handler from "../customer/event/handler/send-consolelog2-customer-is-created.handler";
+import SendConsoleLog1Handler from "../../customer/event/handler/send-consolelog1-customer-is-created.handler";
+import SendConsoleLog2Handler from "../../customer/event/handler/send-consolelog2-customer-is-created.handler";
 import { CustomerCreatedEvent } from "./event-customer-created";
-import EventDispatcher from "./event/event-dispatcher";
+import EventDispatcher from "./event-dispatcher";
 
 describe("Customer events tests", () => {
   it("should notify when customer is created", () => {

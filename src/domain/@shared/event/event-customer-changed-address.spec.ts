@@ -1,6 +1,6 @@
-import { SendConsoleLogAddressHandler } from "../customer/event/handler/send-consolelog-change-address.handler";
+import { SendConsoleLogAddressHandler } from "../../customer/event/handler/send-consolelog-change-address.handler";
 import { CustomerChangedAddressEvent } from "./event-customer-changed-address";
-import EventDispatcher from "./event/event-dispatcher";
+import EventDispatcher from "./event-dispatcher";
 
 describe("Customer changed of address event tests", () => {
   it("should notify the event handlers of the change of address of a customer", () => {
